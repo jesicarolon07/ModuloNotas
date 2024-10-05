@@ -51,40 +51,51 @@
                     </select>
                 </div>
 
-                <div>
-                    <label></label>
-                    <input>
+                <div class="mb-3">
+                    <label for="nota">Nota</label>
+                    <input type="number" id="nota" step="0.1" min="0" max="10" required class="form-control" >
                 </div>
 
-                <div>
-                    <label></label>
-                    <select class="form-select" aria-label="Disabled select example" disabled>
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                <div class="mb-3">
+                    <label for="tipo_nota"> Tipo de Nota</label>
+                    <select id="tipo_nota" name="tipo_nota" class="form-select" aria-label="Disabled select example" disabled>
+                        <option value="">Seleccionar tipo de nota</option>
+                        <option value="trabajo_practico">Trabajo practico</option>
+                        <option value="parcial">Parcial</option>
+                        <option value="oral">Oral</option>
                     </select>
                 </div>
 
                 <div>
-                    <label></label>
-                    <select class="form-select" aria-label="Disabled select example" disabled>
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <label for="anio">Año</label>
+                    <select id="anio" name="anio"  class="form-select" aria-label="Disabled select example" disabled>
+                      
+                        <option value="">Seleccionar tipo de año</option>
+                        <option value="primer_anio">Primer Año</option>
+                        <option value="segundo_anio">Segundo Año</option>
+                        <option value="tercer_anio">Segundo Año</option>
                     </select>
                 </div>
 
                 <div>
-                    <label></label>
-                    <select class="form-select" aria-label="Disabled select example" disabled>
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <label for="periodo">Periodo</label>
+                    <select id="periodo" name="periodo" class="form-select" aria-label="Disabled select example" disabled>
+
+                        <option value="">Seleccionar periodo</option>
+                        <option value="cuatrimestral1">Primer Cuatrimestre</option>
+                        <option value="cuatrimestral2">Segundo Cuatrimestre</option>
+                        <option value="cuatrimestral3">Tercer Cuatrimestre</option>
+                        <option value="bimestral1">Primer Bimestre</option>
+                        <option value="bimestral2">Segundo Bimestre</option>
+                        <option value="bimestral3">Tercer Bimestre</option>
+                        <option value="bimestral4">Cuarto Bimestre</option>
+                        <option value="semestral1">Primer Semestre</option>
+                        <option value="semestral2">Segundo Semestre</option>
+                        <option value="semestral3">Tercer Semestre</option>
                     </select>
                 </div>
+                <button></button>
+                <a></a>
               
             </form>
         </div>

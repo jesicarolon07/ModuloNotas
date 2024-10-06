@@ -38,9 +38,158 @@
             <form method="POST" action="cargarnotas.php">
 
                 <div class="mb-3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <label for="materia">Seleccionar Materia</label>
                     <select id="materia" name="materia" class="form-select" aria-label="Disabled select example" disabled>
                         <option value="">Seleccionar la materia del estudiante</option>
+                        <?php 
+                            if(mysqli_num_rows($resultM) > 0){
+                                while($row= mysqli_fetch_assoc($resultM)){
+                                    echo "<option value='". $row['id_materia']. "'>" . $row['denominacion_materia']. "</option>";
+                                }
+                            }else{
+                                echo "<option value=''>No hay materias disponibles</option>"
+                            }
+                        ?>
                     </select>
                 </div>
 

@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="../styles/styletablas.css">
 </head>
 
+<style>
+    .contenedor{
+        max_width: 600px;
+        margin: 0 auto;
+        display: block;
+    }
+</style>
+
 <body>
     <?php
         require('../conexion/conexion.php');
@@ -26,15 +34,8 @@
     ?>
     <div class="contenedor">
         <div class="container mt-4">
-            <h2></h2>
-            <form>
-                <div>
-                    <label></label>
-                    <select>
-                        <option></option>
-
-                    </select>
-                </div>
+            <h2>Cargar Notas</h2>
+            <form method="POST" action="cargarnotas.php">
 
                 <div class="mb-3">
                     <label for="materia">Seleccionar Materia</label>
@@ -58,7 +59,7 @@
 
                 <div class="mb-3">
                     <label for="tipo_nota"> Tipo de Nota</label>
-                    <select id="tipo_nota" name="tipo_nota" class="form-select" aria-label="Disabled select example" disabled>
+                    <select id="tipo_nota" name="tipo_nota" required class="form-control" aria-label="Disabled select example">
                         <option value="">Seleccionar tipo de nota</option>
                         <option value="trabajo_practico">Trabajo practico</option>
                         <option value="parcial">Parcial</option>
@@ -66,9 +67,9 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="mb-3">
                     <label for="anio">Año</label>
-                    <select id="anio" name="anio"  class="form-select" aria-label="Disabled select example" disabled>
+                    <select id="anio" name="anio"  required class="form-control" aria-label="Disabled select example">
                       
                         <option value="">Seleccionar tipo de año</option>
                         <option value="primer_anio">Primer Año</option>
@@ -77,9 +78,9 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="mb-3">
                     <label for="periodo">Periodo</label>
-                    <select id="periodo" name="periodo" class="form-select" aria-label="Disabled select example" disabled>
+                    <select id="periodo" name="periodo"  required class="form-control" aria-label="Disabled select example">
 
                         <option value="">Seleccionar periodo</option>
                         <option value="cuatrimestral1">Primer Cuatrimestre</option>
@@ -94,11 +95,12 @@
                         <option value="semestral3">Tercer Semestre</option>
                     </select>
                 </div>
-                <button></button>
-                <a></a>
+                <button type="submit" class="btn btn-primary custom-button mt-3">Enviar Notas</button>
+                <a href="./tablanotas.php" class="btn btn-primary custom-button m-2 mt-4">Volver a Listado</a>
               
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

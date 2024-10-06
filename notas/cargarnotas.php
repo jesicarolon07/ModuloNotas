@@ -32,157 +32,22 @@
         $queryE ="SELECT id_estudiante, nombres, apellidos FROM estudiantes";
         $resultE = mysqli_query($conn, $queryE);
     ?>
+
+    
+
+
+
     <div class="contenedor">
         <div class="container mt-4">
             <h2>Cargar Notas</h2>
             <form method="POST" action="cargarnotas.php">
 
                 <div class="mb-3">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <label for="materia">Seleccionar Materia</label>
                     <select id="materia" name="materia" class="form-select" aria-label="Disabled select example" disabled>
                         <option value="">Seleccionar la materia del estudiante</option>
                         <?php 
-                            if(mysqli_num_rows($resultM) > 0){
+                            if($resultM && mysqli_num_rows($resultM) > 0){
                                 while($row= mysqli_fetch_assoc($resultM)){
                                     echo "<option value='". $row['id_materia']. "'>" . $row['denominacion_materia']. "</option>";
                                 }
@@ -198,6 +63,19 @@
                     <label for="estudiante">Seleccionar Estudiante</label>
                     <select id="estudiante" name="estudiante" class="form-select" aria-label="Disabled select example" disabled>
                         <option value="">Seleccionar al estudiante</option>
+
+                        <?php
+                        
+                            if($resultE && mysqli_num_rows($resultE) > 0 ){
+                                while ($row = mysqli_fetch_assoc($resultE)){
+                                    echo "<option value='" . $row['id_estudiante'] . "'>" . $row['nombres'] . " " . $row['apellidos'] . "</option>";
+                                }
+                            } else{
+                                echo "<option value=''>No hay estudiantes disponibles</option>"
+                            }
+                    
+                        
+                        ?>
                     </select>
                 </div>
 

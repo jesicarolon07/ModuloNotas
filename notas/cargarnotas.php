@@ -33,6 +33,17 @@
         $resultE = mysqli_query($conn, $queryE);
     ?>
 
+    <?php
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            $materia = $_POST['materia'];
+            $estudiante = $_POST['estudiante'];
+            $anio = $_POST['anio'];
+            $nota = $_POST['nota'];
+            $tipo_nota = $_POST['tipo_nota'];
+            $periodo = $_POST['periodo'];
+        }
+    ?>
+
     
 
 

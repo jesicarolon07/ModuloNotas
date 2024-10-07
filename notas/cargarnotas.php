@@ -29,7 +29,8 @@
 
         $queryM ="SELECT id_materia, denominacion_materia FROM materia";
         $resultM = mysqli_query($conn, $queryM);
-        $queryE ="SELECT id_estudiante, nombres, apellidos FROM estudiantes";
+        $queryE ="SELECT id_estudiante, nombres, apellidos FROM
+         estudiantes";
         $resultE = mysqli_query($conn, $queryE);
     ?>
 
@@ -41,6 +42,13 @@
             $nota = $_POST['nota'];
             $tipo_nota = $_POST['tipo_nota'];
             $periodo = $_POST['periodo'];
+        }
+        $query ="INSERT INTO nota (id_materia, id_estudiante, anio, nota, tipo_nota, periodo)";
+        $stmt = mysqli_prepare($conn, $query);
+        if(mysqli_stmt_execute($stmt)){
+            echo "Los datos se guardaron correctamente";
+        }else{
+            echo "Error al guardart datos";
         }
     ?>
 

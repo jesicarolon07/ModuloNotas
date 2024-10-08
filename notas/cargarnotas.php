@@ -160,7 +160,14 @@
         document.addEventListener ('keydown', function (e) ){
             if(e.key === 'F5'){
                 e.preventDefault();
-                alert("hola");
+                const formulario = e.target.form;
+                const array = ;
+                const nextElement = formulario.elements[array+1];
+
+                if(nextElement){
+                    nextElement.focus();
+                }
+               
 
             }
 

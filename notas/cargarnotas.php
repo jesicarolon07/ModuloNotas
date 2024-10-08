@@ -71,7 +71,7 @@
 
                 <div class="mb-3">
                     <label for="materia">Seleccionar Materia</label>
-                    <select id="materia" name="materia">
+                    <select id="materia" name="materia" required class="form-control">
                         <option value="">Seleccionar la materia del estudiante</option>
                         <?php 
                             if($resultM && mysqli_num_rows($resultM) > 0){
@@ -88,7 +88,7 @@
 
                 <div class="mb-3">
                     <label for="estudiante">Seleccionar Estudiante</label>
-                    <select id="estudiante" name="estudiante" >
+                    <select id="estudiante" name="estudiante" required class="form-control" >
                         <option value="">Seleccionar al estudiante</option>
 
                         <?php
@@ -158,10 +158,10 @@
 
     <script>
         document.addEventListener ('keydown', function (e) ){
-            if(e.key === 'F5'){
+            if(e.key === 'Enter'){
                 e.preventDefault();
                 const formulario = e.target.form;
-                const array = ;
+                const array = Array.prototype.indexOf.call(formulario, e.target);
                 const nextElement = formulario.elements[array+1];
 
                 if(nextElement){
@@ -173,6 +173,7 @@
 
         }
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -43,12 +43,13 @@
             $tipo_nota = $_POST['tipo_nota'];
             $periodo = $_POST['periodo'];
         }
-        $query ="INSERT INTO nota (id_materia, id_estudiante, anio, nota, tipo_nota, periodo)";
+        $query ="INSERT INTO nota (id_materia, id_estudiante, anio, nota, tipo_nota, periodo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        mysqli_prepare( 'iissss',$materia, $estudiante, $anio, $nota, $tipo_nota, $periodo);
         $stmt = mysqli_prepare($conn, $query);
         if(mysqli_stmt_execute($stmt)){
             echo "Los datos se guardaron correctamente";
         }else{
-            echo "Error al guardart datos";
+            echo "Error al guardart datos". mysqli_error($conn);
         }
     ?>
 

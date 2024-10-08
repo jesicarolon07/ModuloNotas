@@ -158,7 +158,7 @@
 
 
                 <a href="./tablanotas.php" class="btn btn-primary custom-button m-2 mt-4">volver a Listado</a>
-                <a href="./nota5.php" class="btn btn-primary custom-button mt-3">Ingresar Nueva Nota</a>
+                <a href="./cargarnotas.php" class="btn btn-primary custom-button mt-3">Ingresar Nueva Nota</a>
                 </br></br>  
 
                 <form method="POST" action="tablanotas.php">

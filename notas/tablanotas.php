@@ -128,7 +128,7 @@
             e.apellidos 
             FROM notas n
             JOIN materia m ON n.id_materia = m.id_materia
-            JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
+            JOIN estudiantes e ON n.id_estudiante = e.id_estudiante";
            
             $result = mysqli_query($conn, $query);
 

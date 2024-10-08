@@ -11,9 +11,10 @@
 
 <style>
     .contenedor{
-        max_width: 600px;
+        max-width: 600px;
         margin: 0 auto;
         display: block;
+
     }
 </style>
 
@@ -27,36 +28,42 @@
             die("Error: No se pudo conectar a la Base de Datos");
         }
 
+        
         $queryM ="SELECT id_materia, denominacion_materia FROM materia";
         $resultM = mysqli_query($conn, $queryM);
-        $queryE ="SELECT id_estudiante, nombres, apellidos FROM
-         estudiantes";
+        $queryE ="SELECT id_estudiante, nombres, apellidos FROM estudiantes";
         $resultE = mysqli_query($conn, $queryE);
     ?>
 
     <?php
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
             $materia = $_POST['materia'];
             $estudiante = $_POST['estudiante'];
             $anio = $_POST['anio'];
             $nota = $_POST['nota'];
             $tipo_nota = $_POST['tipo_nota'];
             $periodo = $_POST['periodo'];
+            
+            if(empty($materia) || empty($estudiante) || empty($anio) || empty($nota) || empty($tipo_nota) || empty($periodo)){
+                die("Error: Todos los campos son obligatorios" );
+
+            }
+            
+            $query ="INSERT INTO notas (id_materia, id_estudiante, anio, nota, tipo_nota, periodo) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param( $stmt, 'iissss',$materia, $estudiante, $anio, $nota, $tipo_nota, $periodo);
+            if(mysqli_stmt_execute($stmt)){
+                echo "Los datos se guardaron correctamente";
+            }else{
+                echo "Error al guardart datos". mysqli_error($conn);
+            }
+            mysqli_stmt_close($stmt);
         }
-        $query ="INSERT INTO nota (id_materia, id_estudiante, anio, nota, tipo_nota, periodo) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        mysqli_prepare( 'iissss',$materia, $estudiante, $anio, $nota, $tipo_nota, $periodo);
-        $stmt = mysqli_prepare($conn, $query);
-        if(mysqli_stmt_execute($stmt)){
-            echo "Los datos se guardaron correctamente";
-        }else{
-            echo "Error al guardart datos". mysqli_error($conn);
-        }
+        mysqli_close($conn);
+
     ?>
 
     
-
-
-
     <div class="contenedor">
         <div class="container mt-4">
             <h2>Cargar Notas</h2>
@@ -64,7 +71,7 @@
 
                 <div class="mb-3">
                     <label for="materia">Seleccionar Materia</label>
-                    <select id="materia" name="materia" class="form-select" aria-label="Disabled select example" disabled>
+                    <select id="materia" name="materia">
                         <option value="">Seleccionar la materia del estudiante</option>
                         <?php 
                             if($resultM && mysqli_num_rows($resultM) > 0){
@@ -72,7 +79,7 @@
                                     echo "<option value='". $row['id_materia']. "'>" . $row['denominacion_materia']. "</option>";
                                 }
                             }else{
-                                echo "<option value=''>No hay materias disponibles</option>"
+                                echo "<option value=''>No hay materias disponibles</option>";
                             }
                         ?>
                     </select>
@@ -81,7 +88,7 @@
 
                 <div class="mb-3">
                     <label for="estudiante">Seleccionar Estudiante</label>
-                    <select id="estudiante" name="estudiante" class="form-select" aria-label="Disabled select example" disabled>
+                    <select id="estudiante" name="estudiante" >
                         <option value="">Seleccionar al estudiante</option>
 
                         <?php
@@ -91,22 +98,22 @@
                                     echo "<option value='" . $row['id_estudiante'] . "'>" . $row['nombres'] . " " . $row['apellidos'] . "</option>";
                                 }
                             } else{
-                                echo "<option value=''>No hay estudiantes disponibles</option>"
+                                echo "<option value=''>No hay estudiantes disponibles</option>";
                             }
                     
                         
                         ?>
                     </select>
                 </div>
-
+                
                 <div class="mb-3">
                     <label for="nota">Nota</label>
-                    <input type="number" id="nota" step="0.1" min="0" max="10" required class="form-control" >
+                    <input type="number" id="nota" name="nota" step="0.1" min="0" max="10" required class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="tipo_nota"> Tipo de Nota</label>
-                    <select id="tipo_nota" name="tipo_nota" required class="form-control" aria-label="Disabled select example">
+                    <select id="tipo_nota" name="tipo_nota" required class="form-control">
                         <option value="">Seleccionar tipo de nota</option>
                         <option value="trabajo_practico">Trabajo practico</option>
                         <option value="parcial">Parcial</option>
@@ -116,18 +123,18 @@
 
                 <div class="mb-3">
                     <label for="anio">Año</label>
-                    <select id="anio" name="anio"  required class="form-control" aria-label="Disabled select example">
+                    <select id="anio" name="anio"  required class="form-control">
                       
                         <option value="">Seleccionar tipo de año</option>
                         <option value="primer_anio">Primer Año</option>
                         <option value="segundo_anio">Segundo Año</option>
-                        <option value="tercer_anio">Segundo Año</option>
+                        <option value="tercer_anio">Tercer Año</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="periodo">Periodo</label>
-                    <select id="periodo" name="periodo"  required class="form-control" aria-label="Disabled select example">
+                    <select id="periodo" name="periodo"  required class="form-control">
 
                         <option value="">Seleccionar periodo</option>
                         <option value="cuatrimestral1">Primer Cuatrimestre</option>

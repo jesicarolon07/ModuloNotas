@@ -19,15 +19,18 @@
         .contenedor{
             max-width: 1100px;
             float: right;
+            color: #0091FF;
         }
+      
         .estilo{
             position: absolute;
-            top: 25%;
+            top: 30%;
             left: 20%;
             transform: translate(-50%, -50%);
            display: flex;
           justify-content: center;
           font-size: 10px;
+          color: #0091FF;
         }
         .text{
             font-size: 4em;
@@ -49,6 +52,13 @@
       0% { opacity: 0; transform: scale(0.5); }
       100% { opacity: 1; transform: scale(1); }
     }
+
+    .cuadrado-gris {
+            width: 1150px; 
+            height: 10px; 
+            background-color: #0091FF; 
+            margin: 20px auto; 
+        }
     
     </style>
     
@@ -176,9 +186,12 @@
             </div>
              <?php endforeach; ?>
             </div>
+           
 
             <div class="contenedor">
-               <br>  <br>  <br>  <br>  <br>
+               <br>  <br>  <br> 
+               <div class="cuadrado-gris"></div>
+               <br>  <br>  
                 <form method="POST" action="./tablanotas.php">
                     <div class="d-flex gap-1">
                         <input id="busqueda" name="busqueda" type="text" class="form-control bg-transparent focus-ring-none border-0 p-2" placeholder="Busqueda" aria-label="Example text with button addon" aria-describedby="button-addon1">            
@@ -188,15 +201,14 @@
                             <option value="Materias">Materias</option>
                             <option value="Año">Año</option>
                         </select>
-                        <button type="submit" class="btn btn-primary custom-button m-2 mt-4">Buscar</button>
-
+                        <button type="submit" class="btn btn-info  mt-3">Buscar</button>
+         
                     </div>
                 </form>
-
-
-                <a href="./tablanotas.php" class="btn btn-primary custom-button m-2 mt-4">volver a Listado</a>
-                <a href="./cargarnotas.php" class="btn btn-primary custom-button mt-3">Ingresar Nueva Nota</a>
-                </br></br>  
+                <br>
+                <a href="./tablanotas.php" class="btn btn-info  mt-3">volver a Listado</a>
+                <a href="./cargarnotas.php" class="btn btn-info  mt-3">Ingresar Nueva Nota</a>
+                </br></br><br>
 
                 <form method="POST" action="tablanotas.php">
                     <table class="table table-bordered table-striped mt-3">
@@ -230,7 +242,7 @@
                                         <td><?php echo $row['nota'];?></td>
                                         <td><?php echo $row['periodo']; ?></td>
                                         <!-- <td><?php /*echo $row['promedio'];*/ ?></td> -->
-                                        <td><button type="submit" class="btn btn-primary custom-button m-2 mt-4">Editar</button></td>
+                                        <td><button type="submit" class="btn btn-info  mt-3">Editar</button></td>
                                     </tr>
                         <?php } }}?> 
 

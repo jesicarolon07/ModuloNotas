@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargar Nota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/styletablas.css">
 </head>
@@ -17,6 +17,44 @@
         display: block;
 
     }
+    .estilo{
+            position: absolute;
+            top: 30%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+           display: flex;
+          justify-content: center;
+          font-size: 10px;
+          color: #0091FF;
+        }
+        .text{
+            font-size: 4em;
+            margin: 0 5px;
+            animation: fadeIn 1.5s forwards;
+        }
+        .text1 { animation-delay: 0s; }
+        .text2 { animation-delay: 0.2s; }
+        .text3 { animation-delay: 0.4s; }
+        .text4 { animation-delay: 0.6s; }
+        .text5 { animation-delay: 0.8s; }
+        .text6 { animation-delay: 1s; }
+        .text7 { animation-delay: 1.2s; }
+        .text8 { animation-delay: 0.8s; }
+        .text9 { animation-delay: 1s; }
+        .text10 { animation-delay: 1.2s; }
+        
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .cuadrado-gris {
+            width: 1150px; 
+            height: 10px; 
+            background-color: #0091FF; 
+            margin: 20px auto; 
+            
+        }
 </style>
 
 <body>
@@ -63,11 +101,22 @@
         mysqli_close($conn);
 
     ?>
+    <div class="estilo">
+        <?php
+        $texts = ['T', 'a', 'b', 'l', 'a', 'N', 'o','t','a','s'];
+        foreach ($texts as $index => $char): ?>
+        <div class="text text<?php echo $index + 1; ?>">
+            <?php echo $char; ?>
+        </div>
+        <?php endforeach; ?>
+    </div>
 
-<h2>Cargar Notas</h2> 
+    <br>  <br>  <br>  <br> 
+    <div class="cuadrado-gris"></div>
+    <br>   
     <div class="contenedor">
         <div class="container mt-4">
-           
+            
             <form method="POST" action="cargarnotas.php">
 
                 <div class="mb-3">
@@ -150,8 +199,8 @@
                         <option value="semestral3">Tercer Semestre</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary custom-button mt-3">Enviar Notas</button>
-                <a href="./tablanotas.php" class="btn btn-primary custom-button m-2 mt-4">Volver a Listado</a>
+                <button type="submit" class="btn btn-info  mt-3">Enviar Notas</button>
+                <a href="./tablanotas.php" class="btn btn-info  mt-3">Volver a Listado</a>
               
             </form>
         </div>

@@ -17,17 +17,45 @@
             font-size: 16px;
         }
         .contenedor{
-            max-width: 850px;
+            max-width: 1100px;
             float: right;
         }
+        .estilo{
+            position: absolute;
+            top: 25%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+           display: flex;
+          justify-content: center;
+          font-size: 10px;
+        }
+        .text{
+            font-size: 4em;
+            margin: 0 5px;
+            animation: fadeIn 1.5s forwards;
+        }
+        .text1 { animation-delay: 0s; }
+        .text2 { animation-delay: 0.2s; }
+        .text3 { animation-delay: 0.4s; }
+        .text4 { animation-delay: 0.6s; }
+        .text5 { animation-delay: 0.8s; }
+        .text6 { animation-delay: 1s; }
+        .text7 { animation-delay: 1.2s; }
+        .text8 { animation-delay: 0.8s; }
+        .text9 { animation-delay: 1s; }
+        .text10 { animation-delay: 1.2s; }
+        
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
     
     </style>
     
     <body>
         <?php
            require('../conexion/conexion.php');
-           include("../header/sidebar.php");
-           include('../header/headernosearch.php');
+           include("../header/nuevo-header.php");
 
            
            $busqueda= "";
@@ -139,9 +167,18 @@
         ?>
 
         <div class="container mt-4">
+        <div class="estilo">
+            <?php
+            $texts = ['T', 'a', 'b', 'l', 'a', 'N', 'o','t','a','s'];
+            foreach ($texts as $index => $char): ?>
+            <div class="text text<?php echo $index + 1; ?>">
+                <?php echo $char; ?>
+            </div>
+             <?php endforeach; ?>
+            </div>
 
             <div class="contenedor">
-                <h2>Tabla de Notas</h2>
+               <br>  <br>  <br>  <br>  <br>
                 <form method="POST" action="./tablanotas.php">
                     <div class="d-flex gap-1">
                         <input id="busqueda" name="busqueda" type="text" class="form-control bg-transparent focus-ring-none border-0 p-2" placeholder="Busqueda" aria-label="Example text with button addon" aria-describedby="button-addon1">            
@@ -162,7 +199,7 @@
                 </br></br>  
 
                 <form method="POST" action="tablanotas.php">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>ID Notas</th>
@@ -204,6 +241,8 @@
 
             </div>
         </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
     </body>

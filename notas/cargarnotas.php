@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargar Nota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/styletablas.css">
 </head>
 
 <style>
     .contenedor{
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
         display: block;
 
@@ -20,9 +21,9 @@
 
 <body>
     <?php
-        require('../conexion/conexion.php');
-        include("../header/sidebar.php");
-        include("../header/headernosearch.php");
+        require('../conexion/conexion.php');  
+        include("../header/nuevo-header.php");
+
 
         if(!$conn){
             die("Error: No se pudo conectar a la Base de Datos");
@@ -63,10 +64,10 @@
 
     ?>
 
-    
+<h2>Cargar Notas</h2> 
     <div class="contenedor">
         <div class="container mt-4">
-            <h2>Cargar Notas</h2>
+           
             <form method="POST" action="cargarnotas.php">
 
                 <div class="mb-3">

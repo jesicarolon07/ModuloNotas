@@ -13,14 +13,16 @@
         .table th, td {
             font-size: 16px;
         }
+      
         .btn{
             font-size: 16px;
         }
         .contenedor{
             max-width: 1100px;
             float: right;
-            color: #0091FF;
+         
         }
+      
       
         .estilo{
             position: absolute;
@@ -185,7 +187,7 @@
                 <?php echo $char; ?>
             </div>
              <?php endforeach; ?>
-            </div>
+        </div>
            
 
             <div class="contenedor">
@@ -193,17 +195,21 @@
                <div class="cuadrado-gris"></div>
                <br>  <br>  
                 <form method="POST" action="./tablanotas.php">
+
+               
                     <div class="d-flex gap-1">
-                        <input id="busqueda" name="busqueda" type="text" class="form-control bg-transparent focus-ring-none border-0 p-2" placeholder="Busqueda" aria-label="Example text with button addon" aria-describedby="button-addon1">            
-                        <select class="form-select form-select-lg mb-3" name="filtrar" id="filtrar" aria-label="filtro">
+                        <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Búsqueda">
+                        <select name="filtrar" class="form-select">
                             <option value="Apellidos">Apellidos</option>
                             <option value="Periodo">Periodo</option>
                             <option value="Materias">Materias</option>
                             <option value="Año">Año</option>
                         </select>
-                        <button type="submit" class="btn btn-info  mt-3">Buscar</button>
-         
+                        <button type="submit" class="btn btn-info">Buscar</button>
                     </div>
+                   
+                  
+
                 </form>
                 <br>
                 <a href="./tablanotas.php" class="btn btn-info  mt-3">volver a Listado</a>
@@ -252,7 +258,9 @@
         
 
             </div>
+           
         </div>
+                                
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 

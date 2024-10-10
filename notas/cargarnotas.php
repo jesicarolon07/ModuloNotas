@@ -13,9 +13,16 @@
 <style>
     .contenedor{
         max-width: 800px;
-        margin: 0 auto;
+        margin:  auto;
         display: block;
+        padding:50px; 
+        background-color: #f3f5f8;
 
+    }
+    .texto3{
+       
+        padding:5px; 
+        text-align:center;
     }
     .estilo{
             position: absolute;
@@ -120,6 +127,8 @@
             <form method="POST" action="cargarnotas.php">
 
                 <div class="mb-3">
+                    <div class="texto3"><h3> Cargar Notas</h3></div>
+                    <br><br>
                     <label for="materia">Seleccionar Materia</label>
                     <select id="materia" name="materia" required class="form-control">
                         <option value="">Seleccionar la materia del estudiante</option>
@@ -205,6 +214,7 @@
             </form>
         </div>
     </div>
+    <br>
 
     <script>
         document.addEventListener ('keydown', function (e) ){
@@ -222,6 +232,7 @@
             }
 
         }
+     
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>

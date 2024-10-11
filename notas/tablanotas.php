@@ -190,39 +190,31 @@
         ?>
 
         <div class="container mt-4">
-        <div class="estilo">
-            <?php
-            $texts = ['T', 'a', 'b', 'l', 'a', 'N', 'o','t','a','s'];
-            foreach ($texts as $index => $char): ?>
-            <div class="text text<?php echo $index + 1; ?>">
+            <div class="estilo">
+                <?php
+                $texts = ['T', 'a', 'b', 'l', 'a', 'N', 'o','t','a','s'];
+                foreach ($texts as $index => $char): ?>
+                <div class="text text<?php echo $index + 1; ?>">
                 <?php echo $char; ?>
             </div>
-             <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
-           
 
-            <div class="contenedor">
-               <br>  <br>  <br> 
-               <div class="cuadrado-gris"></div>
-               <br>  <br>  
-                <form method="POST" action="./tablanotas.php">
 
-               
-                    <div class="d-flex gap-1">
-                        <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Búsqueda">
-                        <select name="filtrar" class="form-select">
-                            <option value="Apellidos">Apellidos</option>
-                            <option value="Periodo">Periodo</option>
-                            <option value="Materias">Materias</option>
-                            <option value="Año">Año</option>
-                        </select>
-                        <button type="submit" class="boton">Buscar</button>
-                    </div>
-                   
-                  
-
-                </form>
-                <br></br>
+        <div class="contenedor"><br><br><br> 
+        <div class="cuadrado-gris"></div><br><br>  
+        <form method="POST" action="./tablanotas.php">
+            <div class="d-flex gap-1">
+                <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Búsqueda">
+                <select name="filtrar" class="form-select">
+                    <option value="Apellidos">Apellidos</option>
+                    <option value="Periodo">Periodo</option>
+                    <option value="Materias">Materias</option>
+                    <option value="Año">Año</option>
+                </select>
+                <button type="submit" class="boton">Buscar</button>
+            </div>
+        </form><br></br>
                 <a href="./tablanotas.php" class="boton  mt-3">volver a Listado</a>
                 <a href="./cargarnotas.php" class="boton  mt-3">Ingresar Nueva Nota</a>
                 </br></br><br>
@@ -274,7 +266,7 @@
                                      }
                         
                                     ?>
-                                    
+
                                     <tr>
                                         <td><?php echo $row['id_nota']; ?></td>
                                         <td><?php echo $row['nombres']; ?></td>

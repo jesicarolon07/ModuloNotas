@@ -17,7 +17,28 @@
         display: block;
         padding:50px; 
         background-color: #f3f5f8;
+       
+    }
+    .boton{
+            font-size: 16px;
+            border: none; 
+            color: #fff; 
+            padding: 12px 20px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            background-color:  #0091FF;
+           
 
+        }
+    .boton:hover{
+        background-color:  #ddd;
+        color: black;
+    
+        }
+    .botones{
+        text-align: center ;
+        display: flex;
+        justify-content: space-evenly;
     }
     .texto3{
        
@@ -207,9 +228,11 @@
                         <option value="semestral2">Segundo Semestre</option>
                         <option value="semestral3">Tercer Semestre</option>
                     </select>
+                </div><br><br>
+                <div class="botones">
+                    <button type="submit" class="boton  mt-3">Enviar Notas</button>
+                    <a href="./tablanotas.php" class="boton  mt-3">Volver a Listado</a>
                 </div>
-                <button type="submit" class="btn btn-info  mt-3">Enviar Notas</button>
-                <a href="./tablanotas.php" class="btn btn-info  mt-3">Volver a Listado</a>
               
             </form>
         </div>

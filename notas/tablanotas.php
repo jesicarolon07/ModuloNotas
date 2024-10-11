@@ -14,13 +14,24 @@
             font-size: 16px;
         }
       
-        .btn{
+        .boton{
             font-size: 16px;
+            border: none; 
+            color: #fff; 
+            padding: 12px 20px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            background-color:  #0091FF;
         }
+        .boton:hover{
+            background-color:  #ddd;
+            color: black;
+           
+        }
+       
         .contenedor{
             max-width: 1100px;
             float: right;
-         
         }
       
       
@@ -205,15 +216,15 @@
                             <option value="Materias">Materias</option>
                             <option value="Año">Año</option>
                         </select>
-                        <button type="submit" class="btn btn-info">Buscar</button>
+                        <button type="submit" class="boton">Buscar</button>
                     </div>
                    
                   
 
                 </form>
-                <br>
-                <a href="./tablanotas.php" class="btn btn-info  mt-3">volver a Listado</a>
-                <a href="./cargarnotas.php" class="btn btn-info  mt-3">Ingresar Nueva Nota</a>
+                <br></br>
+                <a href="./tablanotas.php" class="boton  mt-3">volver a Listado</a>
+                <a href="./cargarnotas.php" class="boton  mt-3">Ingresar Nueva Nota</a>
                 </br></br><br>
 
                 <form method="POST" action="tablanotas.php">
@@ -228,6 +239,7 @@
                                 <th>Tipo de Nota</th>
                                 <th>Nota</th>
                                 <th>Periodo</th>
+                                <th>BarraProgreso</th>
                               <!--  <th>Promedio </th> -->
                                 <th>Accion</th>
                                     
@@ -238,6 +250,31 @@
                             if ($result) {
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {?>
+
+                                    <?php
+
+                                    $nota= $row['nota'];
+                                    $porcentaje = ($nota/10)*100;
+
+                                    if($nota >= 9){
+
+                                        $color = 'bg-success';
+
+                                     } elseif ($nota >= 7){
+
+                                         $color = 'bg-info';
+
+                                     }elseif ($nota >= 5){
+
+                                         $color = 'bg-warning';
+
+                                     }else{
+
+                                         $color = 'bg-danger';
+                                     }
+                        
+                                    ?>
+                                    
                                     <tr>
                                         <td><?php echo $row['id_nota']; ?></td>
                                         <td><?php echo $row['nombres']; ?></td>
@@ -247,10 +284,16 @@
                                         <td><?php echo $row['tipo_nota'];?></td>
                                         <td><?php echo $row['nota'];?></td>
                                         <td><?php echo $row['periodo']; ?></td>
+                                        <td> 
+                                            <div class="progress" role="progressbar" aria-label="Barra de progreso de la nota" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-striped <?php echo $color; ?>" style="width: <?php echo $porcentaje; ?>%"></div>
+                                            </div> 
+                                        </td>
                                         <!-- <td><?php /*echo $row['promedio'];*/ ?></td> -->
-                                        <td><button type="submit" class="btn btn-info  mt-3">Editar</button></td>
+                                        <td><button type="submit" class="boton  mt-3">Editar</button></td>
                                     </tr>
-                        <?php } }}?> 
+                            
+                        <?php } }} ?> 
 
                     </table>    
                 </form>

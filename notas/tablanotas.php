@@ -201,43 +201,45 @@
         </div>
 
 
-        <div class="contenedor"><br><br><br> 
-        <div class="cuadrado-gris"></div><br><br>  
-        <form method="POST" action="./tablanotas.php">
-            <div class="d-flex gap-1">
-                <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Búsqueda">
-                <select name="filtrar" class="form-select">
-                    <option value="Apellidos">Apellidos</option>
-                    <option value="Periodo">Periodo</option>
-                    <option value="Materias">Materias</option>
-                    <option value="Año">Año</option>
-                </select>
-                <button type="submit" class="boton">Buscar</button>
-            </div>
-        </form><br></br>
-                <a href="./tablanotas.php" class="boton  mt-3">volver a Listado</a>
-                <a href="./cargarnotas.php" class="boton  mt-3">Ingresar Nueva Nota</a>
-                </br></br><br>
+        <div class="contenedor">
+            <br><br><br> 
+            <div class="cuadrado-gris"></div><br><br>  
 
-                <form method="POST" action="tablanotas.php">
-                    <table class="table table-bordered table-striped mt-3">
-                        <thead>
-                            <tr>
-                                <th>ID Notas</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Año</th>
-                                <th>Materias</th>
-                                <th>Tipo de Nota</th>
-                                <th>Nota</th>
-                                <th>Periodo</th>
-                                <th>BarraProgreso</th>
-                              <!--  <th>Promedio </th> -->
-                                <th>Accion</th>
+            <form method="POST" action="./tablanotas.php">
+
+                <div class="d-flex gap-1">
+                    <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Búsqueda">
+                    <select name="filtrar" class="form-select">
+                        <option value="Apellidos">Apellidos</option>
+                        <option value="Periodo">Periodo</option>
+                        <option value="Materias">Materias</option>
+                        <option value="Año">Año</option></select>
+                        <button type="submit" class="boton">Buscar</button>
+                </div>
+            </form><br></br>
+
+            <a href="./tablanotas.php" class="boton  mt-3">volver a Listado</a>
+            <a href="./cargarnotas.php" class="boton  mt-3">Ingresar Nueva Nota</a></br></br><br>
+            <form method="POST" action="tablanotas.php">
+                <table class="table table-bordered table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th>ID Notas</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Año</th>
+                            <th>Materias</th>
+                            <th>Tipo de Nota</th>
+                            <th>Nota</th>
+                            <th>Periodo</th>
+                            <th>BarraProgreso</th>
+                            <!--  <th>Promedio </th> -->
+                            <th>Accion</th>
                                     
-                            </tr> 
-                        </thead> 
+                        </tr> 
+                    </thead> 
                         
+
                         <?php 
                             if ($result) {
                                 if (mysqli_num_rows($result) > 0) {
@@ -286,17 +288,13 @@
                                     </tr>
                             
                         <?php } }} ?> 
-
-                    </table>    
-                </form>
+                </table>    
+            </form>
     
         
 
-            </div>
-           
         </div>
-                                
-        
+           
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 

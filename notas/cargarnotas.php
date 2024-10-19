@@ -9,7 +9,14 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/styletablas.css">
 </head>
-
+<?php
+     include "../variablesPath/variablesPath.php";
+     require(rutas::$pathConetion);
+     include(rutas::$pathNuevoHeader);
+  
+    /*require(rutas::$pathConetion);
+    include(rutas::$pathNuevoHeader);*/
+  ?>
 <style>
     .contenedor{
         max-width: 800px;
@@ -23,10 +30,14 @@
             font-size: 16px;
             border: none; 
             color: #fff; 
-            padding: 12px 20px; 
+          padding: 5px 15px; 
             cursor: pointer; 
             border-radius: 5px; 
-            background-color:  #0091FF;
+            border: #160f6b 2px solid;
+            color: #160f6b; 
+            
+            
+
            
 
         }
@@ -46,33 +57,36 @@
         text-align:center;
     }
     .estilo{
-            position: absolute;
-            top: 30%;
-            left: 20%;
-            transform: translate(-50%, -50%);
-           display: flex;
-          justify-content: center;
-          font-size: 10px;
-          color: #0091FF;
+        position: relative; 
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap; 
+    font-size: 10px;
+    color: black;
         }
-        .text{
-            font-size: 4em;
-            margin: 0 5px;
-            animation: fadeIn 1.5s forwards;
-        }
-        .text1 { animation-delay: 0s; }
-        .text2 { animation-delay: 0.2s; }
-        .text3 { animation-delay: 0.4s; }
-        .text4 { animation-delay: 0.6s; }
-        .text5 { animation-delay: 0.8s; }
-        .text6 { animation-delay: 1s; }
-        .text7 { animation-delay: 1.2s; }
-        .text8 { animation-delay: 0.8s; }
-        .text9 { animation-delay: 1s; }
-        .text10 { animation-delay: 1.2s; }
+    .text{
+        font-size: 4em;
+        margin: 0 5px;
+        animation: fadeIn 1.5s forwards;/*fadeIn: Nombre de la animación 
+        Al terminar la animación, el elemento permanecerá en el estado final (en este caso, totalmente visible y con tamaño completo). */
+    }
+    .text1 { animation-delay: 0s; }/*Especifica el tiempo que el navegador esperará antes de iniciar la animación */
+    .text2 { animation-delay: 0.2s; }
+    .text3 { animation-delay: 0.4s; }
+    .text4 { animation-delay: 0.6s; }
+    .text5 { animation-delay: 0.8s; }
+    .text6 { animation-delay: 1s; }
+    .text7 { animation-delay: 1.2s; }
+    .text8 { animation-delay: 0.8s; }
+    .text9 { animation-delay: 1s; }
+    .text10 { animation-delay: 1.2s; }
         
     @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.5); }
+      0% { opacity: 0; transform: scale(0.5); }/*@keyframes define la animación llamada fadeIn
+      En este caso, la animación tiene dos etapas clave:
+      0%: Cuando la animación comienza, el elemento es completamente invisible (opacity: 0) y reducido a la mitad de su tamaño (transform: scale(0.5)).
+      100%: Al finalizar la animación, el elemento es completamente visible (opacity: 1) y tiene su tamaño normal (transform: scale(1)). */
       100% { opacity: 1; transform: scale(1); }
     }
 
@@ -84,12 +98,8 @@
             
         }
 </style>
-
 <body>
     <?php
-        require('../conexion/conexion.php');  
-        include("../header/nuevo-header.php");
-
 
         if(!$conn){
             die("Error: No se pudo conectar a la Base de Datos");
@@ -111,20 +121,46 @@
             $tipo_nota = $_POST['tipo_nota'];
             $periodo = $_POST['periodo'];
             
-            if(empty($materia) || empty($estudiante) || empty($anio) || empty($nota) || empty($tipo_nota) || empty($periodo)){
+            if(empty($materia) || empty($estudiante) || empty($anio) || empty($nota) || empty($tipo_nota) || empty($periodo)){ 
+
+                /*Determina si una variable es considerada vacía. Una variable se considera vacía si no existe o si su valor es igual a false. 
+                empty() no genera una advertencia si la variable no existe. */
+                
                 die("Error: Todos los campos son obligatorios" );
 
             }
             
             $query ="INSERT INTO notas (id_materia, id_estudiante, anio, nota, tipo_nota, periodo) VALUES (?, ?, ?, ?, ?, ?)";
+
+            /*se utiliza en consultas SQL para insertar valores en una tabla. Los signos de interrogación (?) son marcadores de 
+            posición para los valores que se van a insertar, los cuales se proporcionan posteriormente en la consulta. 
+            Esto permite la inserción dinámica de datos y es útil en sentencias como INSERT o en operaciones que trabajan con subconsultas.
+            Values es Una expresión que define un sólo valor de una tabla de resultados de una columna. Una o más expresiones que definen los valores
+             para una o varias columnas de la tabla de resultados.
+             Prepara la consulta SQL y devuelve un manejador de sentencia para ser utilizado por operaciones
+             adicionales sobre la sentencia. La consulta debe constar de una única sentencia SQL. Los marcadores de 
+             parámetros deben estar ligados a variables de aplicación utilizando mysqli_stmt_bind_param() y/o mysqli_stmt_bind_result()
+             antes de ejecutar la sentencia u obtener las filas. */
+
             $stmt = mysqli_prepare($conn, $query);
+            /*prepara una sentencia SQL para su ejecución */
             mysqli_stmt_bind_param( $stmt, 'iissss',$materia, $estudiante, $anio, $nota, $tipo_nota, $periodo);
+            /*es usada para enlazar variables para los marcadores de parámetros en la sentencia SQL que fue pasada
+             a mysqli_prepare(). 
+             */
+
             if(mysqli_stmt_execute($stmt)){
+
+            /* ejecuta una consulta que había sido previamente preparada usando la función mysqli_prepare() representada por el objeto stmt . 
+            Cuando se ejecuta cualquier marcador de parámetro que exista será automáticamente remplazado con los datos apropiados. */
+
                 echo "Los datos se guardaron correctamente";
             }else{
                 echo "Error al guardart datos". mysqli_error($conn);
             }
             mysqli_stmt_close($stmt);
+            /*también desasigna el gestor de sentencias. Si la sentencia actual tiene resultados pendientes o no leídos, esta función 
+            los cancelará, por lo que se podrá ejecutar la siguiente consulta. */
         }
         mysqli_close($conn);
 
@@ -138,10 +174,8 @@
         </div>
         <?php endforeach; ?>
     </div>
-
-    <br>  <br>  <br>  <br> 
-    <div class="cuadrado-gris"></div>
-    <br>   
+    <br><hr style="border: none; height: 2px; background-color: black; width: 100%; "> <br>
+      
     <div class="contenedor">
         <div class="container mt-4">
             
@@ -241,15 +275,50 @@
 
     <script>
         document.addEventListener ('keydown', function (e) ){
+        /*se utiliza para agregar un evento que detecta cuando una tecla es presionada en el teclado.
+         Dentro de la función proporcionada, puedes utilizar el objeto e para acceder a información sobre la tecla que fue presionada, 
+         como su código y valor, lo que permite realizar acciones específicas en respuesta a dicho evento.
+         el .addEventListener por un lado tiene el parametro1 que dice el metodo y el parametro2 que dice la funcion o objeto.
+         detecta cuando una tecla es presionada. El evento que se escucha es 'keydown', que se activa en el momento en que se
+         presiona cualquier tecla en el teclado.
+         e es el objeto del evento, que contiene información sobre el evento que acaba de ocurrir, incluyendo qué tecla fue presionada.
+         */
             if(e.key === 'Enter'){
+
+                /*La propiedad key del objeto de evento permite obtener el carácter, mientras que la propiedad
+                code del evento permite obtener el “código físico de la tecla”. 
+                Dentro de la función, se utiliza una condición para verificar si la tecla presionada es la tecla "Enter".
+                La propiedad e.key devuelve el valor de la tecla presionada, y si es igual a 'Enter', el código dentro del bloque if se ejecutará.
+                */
+
                 e.preventDefault();
+                /*Este método cancela el comportamiento por defecto que tendría la tecla "Enter" dentro de un formulario. Por ejemplo, 
+                en muchos formularios, al presionar "Enter", se suele enviar el formulario. Con preventDefault(), se evita que esto suceda.
+                es para evitar que nuestros formularios se envíen con el método que tienen configurado por defecto: recargar la página y añadir
+                el valor de nuestro formulario como parámetros en la URL.
+                */
                 const formulario = e.target.form;
+
+                /*e.target se refiere al elemento que disparó el evento, en este caso, el campo del formulario donde se presionó la tecla "Enter".
+                .form devuelve el formulario al que pertenece ese elemento. Aquí, se almacena el formulario completo en la constante formulario.
+                es el comando que nos permite acceder a la propiedad target de un objeto event. Puedes conocer esta propiedad al pintar un evento 
+                recibido en tu navegador usando console. */
+
                 const array = Array.prototype.indexOf.call(formulario, e.target);
+                /*Encuentra la posición del campo actual (donde se presionó "Enter") dentro del formulario. Utiliza Array.prototype.indexOf
+                para obtener el índice del campo (e.target) dentro de los elementos del formulario (formulario.elements).
+                
+                indexOf() retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente*/
                 const nextElement = formulario.elements[array+1];
+                /*Se obtuvo el siguiente elemento dentro del formulario. El valor de array es la posición actual del campo donde 
+                se presionó "Enter", por lo que array + 1 corresponde al siguiente campo en el formulario.
+                formulario.elements contiene todos los campos del formulario como un array. */
 
                 if(nextElement){
                     nextElement.focus();
                 }
+                /*i existe un siguiente elemento en el formulario (es decir, no estamos en el último campo), se establece el foco en ese elemento utilizando 
+                nextElement.focus(). Esto significa que después de presionar "Enter", el cursor saltará automáticamente al siguiente campo del formulario. */
                
 
             }

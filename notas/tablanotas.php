@@ -9,6 +9,11 @@
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/styletablas.css">
     </head>
+    <?php
+    include "../variablesPath/variablesPath.php";
+    require(rutas::$pathConetion);
+    include(rutas::$pathNuevoHeader);
+    ?>
     <style>
         .table th, td {
             font-size: 16px;
@@ -77,9 +82,7 @@
     
     <body>
         <?php
-           require('../conexion/conexion.php');
-           include("../header/nuevo-header.php");
-
+          
            
            $busqueda= "";
            $result = null;
@@ -89,7 +92,7 @@
             $busqueda = strtolower($_POST['busqueda']);
 
             switch($filtrar){
-                case 'Apellido':
+                case 'apellidos':
                 $query = "SELECT 
                 n.id_nota, 
                 n.anio,
@@ -210,7 +213,7 @@
                 <div class="d-flex gap-1">
                     <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Búsqueda">
                     <select name="filtrar" class="form-select">
-                        <option value="Apellidos">Apellidos</option>
+                        <option value="apellidos">Apellidos</option>
                         <option value="Periodo">Periodo</option>
                         <option value="Materias">Materias</option>
                         <option value="Año">Año</option></select>

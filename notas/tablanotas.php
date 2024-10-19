@@ -15,69 +15,68 @@
     include(rutas::$pathNuevoHeader);
     ?>
     <style>
-        .table th, td {
-            font-size: 16px;
-        }
-      
-        .boton{
-            font-size: 16px;
-            border: none; 
-            color: #fff; 
-            padding: 12px 20px; 
-            cursor: pointer; 
-            border-radius: 5px; 
-            background-color:  #0091FF;
-        }
-        .boton:hover{
-            background-color:  #ddd;
-            color: black;
-           
-        }
-       
-        .contenedor{
-            max-width: 1100px;
-            float: right;
-        }
-      
-      
-        .estilo{
-            position: absolute;
-            top: 30%;
-            left: 20%;
-            transform: translate(-50%, -50%);
-           display: flex;
-          justify-content: center;
-          font-size: 10px;
-          color: #0091FF;
-        }
-        .text{
-            font-size: 4em;
-            margin: 0 5px;
-            animation: fadeIn 1.5s forwards;
-        }
-        .text1 { animation-delay: 0s; }
-        .text2 { animation-delay: 0.2s; }
-        .text3 { animation-delay: 0.4s; }
-        .text4 { animation-delay: 0.6s; }
-        .text5 { animation-delay: 0.8s; }
-        .text6 { animation-delay: 1s; }
-        .text7 { animation-delay: 1.2s; }
-        .text8 { animation-delay: 0.8s; }
-        .text9 { animation-delay: 1s; }
-        .text10 { animation-delay: 1.2s; }
-        
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.5); }
-      100% { opacity: 1; transform: scale(1); }
+    .table th, td {
+        font-size: 16px;
+        background-color:  #ddd;
+        text-align: center;
     }
-
-    .cuadrado-gris {
-            width: 1150px; 
-            height: 10px; 
-            background-color: #0091FF; 
-            margin: 20px auto; 
-        }
-    
+    .table th{
+        border: #acabb0 2px solid;
+    }
+    .boton{
+        font-size: 16px;
+        border: none; 
+        color: #160f6b; 
+        padding: 5px 15px; 
+        cursor: pointer; 
+        border-radius: 7px; 
+        border: #160f6b 2px solid;
+    }
+    .boton:hover{
+        background-color:  #ddd;
+        color: #160f6b;
+    }
+    .thead {
+        color: #160f6b;
+    }
+    .botones{
+        text-align: center ;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .contenedor{
+        max-width: 1100px;
+        float: right;
+    }
+    .estilo{
+        position: relative; 
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-wrap: wrap; 
+        font-size: 10px;
+        color: black;
+    }
+    .text{
+        font-size: 4em;
+        margin: 0 5px;
+        animation: fadeIn 1.5s forwards;
+          
+    }
+    .text1 { animation-delay: 0s; }
+    .text2 { animation-delay: 0.2s; }
+    .text3 { animation-delay: 0.4s; }
+    .text4 { animation-delay: 0.6s; }
+    .text5 { animation-delay: 0.8s; }
+    .text6 { animation-delay: 1s; }
+    .text7 { animation-delay: 1.2s; }
+    .text8 { animation-delay: 0.8s; }
+    .text9 { animation-delay: 1s; }
+    .text10 { animation-delay: 1.2s; }
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: scale(0.5); }
+        100% { opacity: 1; transform: scale(1); }
+    }
     </style>
     
     <body>

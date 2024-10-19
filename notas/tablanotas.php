@@ -117,6 +117,7 @@
                     n.periodo, 
                     m.denominacion_materia, 
                     e.nombres, 
+                    e.dni_estudiante, 
                     e.apellidos 
                     FROM notas n
                     JOIN materia m ON n.id_materia = m.id_materia
@@ -132,6 +133,7 @@
                     n.periodo, 
                     m.denominacion_materia, 
                     e.nombres, 
+                    e.dni_estudiante, 
                     e.apellidos 
                     FROM notas n
                     JOIN materia m ON n.id_materia = m.id_materia
@@ -147,6 +149,7 @@
                     n.periodo, 
                     m.denominacion_materia, 
                     e.nombres, 
+                    e.dni_estudiante, 
                     e.apellidos 
                     FROM notas n
                     JOIN materia m ON n.id_materia = m.id_materia
@@ -163,6 +166,7 @@
                 n.periodo, 
                 m.denominacion_materia, 
                 e.nombres, 
+                e.dni_estudiante, 
                 e.apellidos 
                 FROM notas n
                 JOIN materia m ON n.id_materia = m.id_materia
@@ -179,6 +183,7 @@
             n.periodo, 
             m.denominacion_materia, 
             e.nombres, 
+            e.dni_estudiante, 
             e.apellidos 
             FROM notas n
             JOIN materia m ON n.id_materia = m.id_materia

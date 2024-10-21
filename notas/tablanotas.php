@@ -213,8 +213,7 @@
 
 
         <div class="contenedor">
-            <br><br><br> 
-            <div class="cuadrado-gris"></div><br><br>  
+            
 
             <form method="POST" action="./tablanotas.php">
 
@@ -235,7 +234,7 @@
                 <table class="table table-bordered table-striped mt-3">
                     <thead>
                         <tr>
-                            <th>ID Notas</th>
+                            <th>DNI</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Año</th>
@@ -281,7 +280,7 @@
                                     ?>
 
                                     <tr>
-                                        <td><?php echo $row['id_nota']; ?></td>
+                                        <td><?php echo $row['dni_estudiante']; ?></td>
                                         <td><?php echo $row['nombres']; ?></td>
                                         <td><?php echo $row['apellidos']; ?></td>
                                         <td><?php echo $row['anio']; ?></td>

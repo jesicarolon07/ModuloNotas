@@ -105,7 +105,9 @@
                 FROM notas n
                 JOIN materia m ON n.id_materia = m.id_materia
                 JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
-                WHERE LOWER(e.apellidos) LIKE '%$busqueda%' ";
+                WHERE LOWER(e.apellidos) LIKE '%$busqueda%' 
+                ORDER BY n.nota ASC ";
+                
                 
                 break;
                 case 'Periodo':
@@ -122,7 +124,9 @@
                     FROM notas n
                     JOIN materia m ON n.id_materia = m.id_materia
                     JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
-                    WHERE LOWER( n.periodo) LIKE '%$busqueda%' ";
+                    WHERE LOWER( n.periodo) LIKE '%$busqueda%' 
+                    ORDER BY n.nota ASC ";
+                
                     break;
                 case'Materias':
                     $query = "SELECT 
@@ -138,7 +142,9 @@
                     FROM notas n
                     JOIN materia m ON n.id_materia = m.id_materia
                     JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
-                    WHERE LOWER(m.denominacion_materia) LIKE '%$busqueda%' ";
+                    WHERE LOWER(m.denominacion_materia) LIKE '%$busqueda%' 
+                    ORDER BY n.nota ASC ";
+        
                     break;
                 case 'Año':
                     $query = "SELECT 
@@ -154,7 +160,9 @@
                     FROM notas n
                     JOIN materia m ON n.id_materia = m.id_materia
                     JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
-                    WHERE LOWER(n.anio) LIKE '%$busqueda%' ";
+                    WHERE LOWER(n.anio) LIKE '%$busqueda%' 
+                    ORDER BY n.nota ASC ";
+                
                     break;
 
                 default:
@@ -170,7 +178,9 @@
                 e.apellidos 
                 FROM notas n
                 JOIN materia m ON n.id_materia = m.id_materia
-                JOIN estudiantes e ON n.id_estudiante = e.id_estudiante";
+                JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
+                ORDER BY n.nota ASC ";
+                
                 break;
             }
             $result = mysqli_query($conn, $query);
@@ -187,7 +197,9 @@
             e.apellidos 
             FROM notas n
             JOIN materia m ON n.id_materia = m.id_materia
-            JOIN estudiantes e ON n.id_estudiante = e.id_estudiante";
+            JOIN estudiantes e ON n.id_estudiante = e.id_estudiante
+            ORDER BY n.nota ASC ";
+                
            
             $result = mysqli_query($conn, $query);
 
@@ -228,8 +240,8 @@
                 </div>
             </form><br></br>
 
-            <a href="./tablanotas.php" class="boton  mt-3">volver a Listado</a>
-            <a href="./cargarnotas.php" class="boton  mt-3">Ingresar Nueva Nota</a></br></br><br>
+            <a href="./tablanotas.php" class="boton  mt-3">Filtrar</a>
+            <a href="./cargarnotas.php" class="boton  mt-3">Ingresar</a></br></br><br>
             <form method="POST" action="tablanotas.php">
                 <table class="table table-bordered table-striped mt-3">
                     <thead>
@@ -276,6 +288,10 @@
 
                                          $color = 'bg-danger';
                                      }
+
+                                  
+
+
                         
                                     ?>
 
@@ -288,13 +304,15 @@
                                         <td><?php echo $row['tipo_nota'];?></td>
                                         <td><?php echo $row['nota'];?></td>
                                         <td><?php echo $row['periodo']; ?></td>
+                                  
+                                        
                                         <td> 
                                             <div class="progress" role="progressbar" aria-label="Barra de progreso de la nota" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100">
                                                 <div class="progress-bar progress-bar-striped <?php echo $color; ?>" style="width: <?php echo $porcentaje; ?>%"></div>
                                             </div> 
                                         </td>
-                                        <!-- <td><?php /*echo $row['promedio'];*/ ?></td> -->
-                                        <td><button type="submit" class="boton  mt-3">Editar</button></td>
+                                        <!-- <td> /*echo $row['promedio'];*/ ?></td> -->
+                                        <td><button type="submit" class="boton  mt-3">Modificar</button></td>
                                     </tr>
                             
                         <?php } }} ?> 

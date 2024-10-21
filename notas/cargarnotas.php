@@ -224,17 +224,21 @@
                     <label for="nota">Nota</label>
                     <input type="number" id="nota" name="nota" step="0.1" min="0" max="10" required class="form-control">
                 </div>
+                <div class="dynamicFields">
+                    <div class="mb-3">
+                        <label for="tipo_nota"> Tipo de Nota</label>
+                        <select id="tipo_nota" name="tipo_nota" required class="form-control">
+                            <option value="">Seleccionar tipo de nota</option>
+                            <option value="trabajo_practico">Trabajo practico</option>
+                            <option value="parcial">Parcial</option>
+                            <option value="oral">Oral</option>
+                        </select>
+                        <button type="button" class="btn btn-danger remove-field">-</button>
+                        <button type="button" class="btn btn-success mt-3" id="addField">+</button>
 
-                <div class="mb-3">
-                    <label for="tipo_nota"> Tipo de Nota</label>
-                    <select id="tipo_nota" name="tipo_nota" required class="form-control">
-                        <option value="">Seleccionar tipo de nota</option>
-                        <option value="trabajo_practico">Trabajo practico</option>
-                        <option value="parcial">Parcial</option>
-                        <option value="oral">Oral</option>
-                    </select>
                 </div>
 
+                </div>
                 <div class="mb-3">
                     <label for="anio">Año</label>
                     <select id="anio" name="anio"  required class="form-control">

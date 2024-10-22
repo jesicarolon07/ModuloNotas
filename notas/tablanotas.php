@@ -312,7 +312,7 @@
                                             </div> 
                                         </td>
                                         <!-- <td> /*echo $row['promedio'];*/ ?></td> -->
-                                        <td><button type="submit" class="boton  mt-3">Modificar</button></td>
+                                        <td><a href="../modificar_nota/modificar_nota.php" class="boton  mt-3">Modificar</a></td>
                                     </tr>
                             
                         <?php } }} ?> 

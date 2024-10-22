@@ -18,53 +18,6 @@
     include(rutas::$pathNuevoHeader);*/
   ?>
 <style>
-    .contenedor{
-        max-width: 800px;
-        margin:  auto;
-        display: block;
-        padding:50px; 
-        background-color: #f3f5f8;
-       
-    }
-    .boton{
-            font-size: 16px;
-            border: none; 
-            color: #fff; 
-          padding: 5px 15px; 
-            cursor: pointer; 
-            border-radius: 5px; 
-            border: #160f6b 2px solid;
-            color: #160f6b; 
-            
-            
-
-           
-
-        }
-    .boton:hover{
-        background-color:  #ddd;
-        color: black;
-    
-        }
-    .botones{
-        text-align: center ;
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .texto3{
-       
-        padding:5px; 
-        text-align:center;
-    }
-    .estilo{
-        position: relative; 
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-wrap: wrap; 
-    font-size: 10px;
-    color: black;
-        }
     .text{
         font-size: 4em;
         margin: 0 5px;
@@ -90,13 +43,6 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    .cuadrado-gris {
-            width: 1150px; 
-            height: 10px; 
-            background-color: #0091FF; 
-            margin: 20px auto; 
-            
-        }
 </style>
 <body>
     <?php
@@ -277,59 +223,6 @@
     </div>
     <br>
 
-    <script>
-        document.addEventListener ('keydown', function (e) ){
-        /*se utiliza para agregar un evento que detecta cuando una tecla es presionada en el teclado.
-         Dentro de la función proporcionada, puedes utilizar el objeto e para acceder a información sobre la tecla que fue presionada, 
-         como su código y valor, lo que permite realizar acciones específicas en respuesta a dicho evento.
-         el .addEventListener por un lado tiene el parametro1 que dice el metodo y el parametro2 que dice la funcion o objeto.
-         detecta cuando una tecla es presionada. El evento que se escucha es 'keydown', que se activa en el momento en que se
-         presiona cualquier tecla en el teclado.
-         e es el objeto del evento, que contiene información sobre el evento que acaba de ocurrir, incluyendo qué tecla fue presionada.
-         */
-            if(e.key === 'Enter'){
-
-                /*La propiedad key del objeto de evento permite obtener el carácter, mientras que la propiedad
-                code del evento permite obtener el “código físico de la tecla”. 
-                Dentro de la función, se utiliza una condición para verificar si la tecla presionada es la tecla "Enter".
-                La propiedad e.key devuelve el valor de la tecla presionada, y si es igual a 'Enter', el código dentro del bloque if se ejecutará.
-                */
-
-                e.preventDefault();
-                /*Este método cancela el comportamiento por defecto que tendría la tecla "Enter" dentro de un formulario. Por ejemplo, 
-                en muchos formularios, al presionar "Enter", se suele enviar el formulario. Con preventDefault(), se evita que esto suceda.
-                es para evitar que nuestros formularios se envíen con el método que tienen configurado por defecto: recargar la página y añadir
-                el valor de nuestro formulario como parámetros en la URL.
-                */
-                const formulario = e.target.form;
-
-                /*e.target se refiere al elemento que disparó el evento, en este caso, el campo del formulario donde se presionó la tecla "Enter".
-                .form devuelve el formulario al que pertenece ese elemento. Aquí, se almacena el formulario completo en la constante formulario.
-                es el comando que nos permite acceder a la propiedad target de un objeto event. Puedes conocer esta propiedad al pintar un evento 
-                recibido en tu navegador usando console. */
-
-                const array = Array.prototype.indexOf.call(formulario, e.target);
-                /*Encuentra la posición del campo actual (donde se presionó "Enter") dentro del formulario. Utiliza Array.prototype.indexOf
-                para obtener el índice del campo (e.target) dentro de los elementos del formulario (formulario.elements).
-                
-                indexOf() retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente*/
-                const nextElement = formulario.elements[array+1];
-                /*Se obtuvo el siguiente elemento dentro del formulario. El valor de array es la posición actual del campo donde 
-                se presionó "Enter", por lo que array + 1 corresponde al siguiente campo en el formulario.
-                formulario.elements contiene todos los campos del formulario como un array. */
-
-                if(nextElement){
-                    nextElement.focus();
-                }
-                /*i existe un siguiente elemento en el formulario (es decir, no estamos en el último campo), se establece el foco en ese elemento utilizando 
-                nextElement.focus(). Esto significa que después de presionar "Enter", el cursor saltará automáticamente al siguiente campo del formulario. */
-               
-
-            }
-
-        }
-     
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

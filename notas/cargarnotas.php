@@ -10,14 +10,57 @@
     <link rel="stylesheet" href="../styles/styletablas.css">
 </head>
 <?php
-     include "../variablesPath/variablesPath.php";
-     require(rutas::$pathConetion);
-     include(rutas::$pathNuevoHeader);
+    include_once "../variablesPath/variablesPath.php";
+    require_once(rutas::$pathConetion);
+    include_once(rutas::$pathNuevoHeader);
+ 
   
     /*require(rutas::$pathConetion);
     include(rutas::$pathNuevoHeader);*/
   ?>
 <style>
+    .contenedor{
+        max-width: 800px;
+        margin:  auto;
+        display: block;
+        padding:50px; 
+        background-color: #f3f5f8;
+       
+    }
+    .boton{
+            font-size: 16px;
+            border: none; 
+            color: #fff; 
+          padding: 5px 15px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            border: #160f6b 2px solid;
+            color: #160f6b; 
+        }
+    .boton:hover{
+        background-color:  #ddd;
+        color: black;
+    
+        }
+    .botones{
+        text-align: center ;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .texto3{
+       
+        padding:5px; 
+        text-align:center;
+    }
+    .estilo{
+        position: relative; 
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap; 
+    font-size: 10px;
+    color: black;
+        }
     .text{
         font-size: 4em;
         margin: 0 5px;

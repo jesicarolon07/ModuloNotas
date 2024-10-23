@@ -10,9 +10,10 @@
         <link rel="stylesheet" href="../styles/styletablas.css">
     </head>
     <?php
-    include "../variablesPath/variablesPath.php";
-    require(rutas::$pathConetion);
-    include(rutas::$pathNuevoHeader);
+ include_once "../variablesPath/variablesPath.php";
+ require_once(rutas::$pathConetion);
+ include_once(rutas::$pathNuevoHeader);
+
     ?>
     <style>
     .table th, td {

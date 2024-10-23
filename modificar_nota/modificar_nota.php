@@ -2,15 +2,20 @@
 
 <?php
 
-  include "../variablesPath/variablesPath.php";
-  require(rutas::$pathConetion);
-  include(rutas::$pathNuevoHeader);
-  include(rutas::$pathcargarnota);
-  include(rutas::$pathtablanota);
+  include_once "../variablesPath/variablesPath.php";
+  require_once(rutas::$pathConetion);
+  include_once(rutas::$pathNuevoHeader);
+ 
 ?>
 
  
 <?php
+if($_SERVER["REQUEST_METHOD" == "POST"]){
+    $id_nota= $_POST["id_nota"];
+    $anio = $_POST["anio"];
+    $nota= $_POST["nota"];
+
+}
 $query_modificar = "UPDATE notas SET anio='$anio', nota='$nota', tipo_nota='$tipo_nota', periodo='$periodo' WHERE id_nota=$id_nota";
 if($conn->query($query_modificar) === TRUE){ 
     echo "<div class='alert alert-success' role='alert'>Nota modificada correctamente.</div>";
